@@ -1,0 +1,279 @@
+<!--
+  Title: WD 211 Project
+  Author: Bobby Xiong
+  -->
+
+<!DOCTYPE html>
+	<html lang = "en-us">
+	
+		<head>
+			<title>Chilibees</title> 
+			<link rel="icon" type="image/png" href="./images/weblogo.png">
+			<link href = "./css/main-style.css" rel = "stylesheet">
+			
+			<!-- jQuery and jQuery validation -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/additional-methods.js"></script>
+			<script src="./js/user.js"></script>
+			<script src="./js/class.js"></script>
+		</head>
+		
+		<body>
+		
+			<!-- Navbar -->
+			<div class="navbar">	
+				<a href="user-facing.html">Customers</a>
+				<a href="employee-facing.html">Employees</a>
+			</div>
+			
+			<!-- Shopping cart Icon -->
+			<img class="cart" id="cart" src="./images/shoppingcart.png" alt="Shopping Cart"> <!-- add function for show cart -->
+			<span id="cartSize">0</span>
+			
+			<!-- Logo -->
+			<header>
+				<img class="logo" src="./images/weblogo.png" alt="Chilibees">
+			</header>	
+			
+			<!-- Store Selector Button -->
+			<div class="storeDiv">
+				<p id="yourStore"></p>
+				<p id="changeStoreP">Select Store</p>
+			</div>
+			
+			<!-- Shopping Cart/payment popup -->
+			<div id="cartDiv">
+				<h1>My Cart</h1>
+				<h2 id="cartMessage"></h2>
+				<div>
+					<hr>
+					<table id="cartItems">
+					</table>
+					<hr>
+				</div>
+				
+				<h3 id="total"></h3>
+				<h4 id="error"></h4>
+				<form id="validationForm" action="submitForm()" name="validate">
+					<div>
+						<label for="emailAddress">Email Address:</label>
+						<input type="email" class="form-control" placeholder="ned@flanders.com" name="emailAddress" id="emailAddress">
+					</div><br>
+					<div>
+						<label for="creditCard">Credit card:</label>
+						<input type="text" maxlength="16" class="form-control" placeholder="XXXXXXXXXXXXXXXX" name="creditCard" id="creditCard">
+					</div><br>
+					<div>
+						<label for="expDate">Exp Date:</label>
+						<input type="text" maxlength="7" class="form-control" placeholder="MM/YYYY" name="expDate" id="expDate">
+					</div><br>
+					
+					<div>
+						<label for="secCode">Security Code:</label>
+						<input type="text" maxlength="3" class="form-control" placeholder="XXX" name="secCode" id="secCode">
+					</div><br>
+					
+					
+					<button type="submit" id="submit">Submit Order</button><br>&nbsp<br>
+				</form>
+				
+				<button type="button" id="closeCart">Close</button>
+			</div>
+			
+			<!-- Store Selector popup -->
+			<div id="storeSelector">
+				<h2>Welcome to Chilibees!</h2>
+				<h3>Please select the store you'd like to order from</h3>
+				<div class="storeFlex">
+					<div class="store">
+						<div class="center">
+							<h2>Stevens Point</h2>
+							<p>123 Fake Street</p>
+						</div>
+						<div class="center">
+							<button type="button" id="stevensPoint">Make my store</button>
+						</div>
+					</div>
+					<div class="store">
+						<div class="center">
+							<h2>Wausau</h2>
+							<p>123 Fake Street</p>
+						</div>
+						<div class="center">
+							<button type="button" id="wausau">Make my store</button>
+						</div>
+					</div>
+					<div class="store">
+						<div class="center">
+							<h2>Green Bay</h2>
+							<p>123 Fake Street</p>
+						</div>
+						<div class="center">
+							<button type="button" id="greenBay">Make my store</button>
+						</div>
+					</div>
+				</div>
+				<button type="button" id="close">Close</button>
+			</div>
+			
+			<!-- Menu -->
+			<div class="sectionFlex">
+				<div class="solidBorder">
+					<!-- Starters -->	
+					<h1>Starters</h1>
+					<div class="rowFlex">
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/tots.png" alt="Tater Tots">
+							<h2>Tater Tots</h2>
+							<h3>$3.00</h3>
+							<p>Get your own</p>
+							<input type="number" min="1" id="totsAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="totsAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/wings.png" alt="Chicken Wings">
+							<h2>Chicken Wings</h2>
+							<h3>$3.00</h3>
+							<p>Made with real chicken</p>
+							<input type="number" min="1" id="wingsAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="wingsAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/sliders.png" alt="Sliders">
+							<h2>Sliders</h2>
+							<h3>$3.00</h3>
+							<p>Find em in your DMs</p>
+							<input type="number" min="1" id="slidersAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="slidersAdd">Add to Cart!</button>
+						</div>
+					</div>
+				</div>
+				<hr class="horizontalRule">
+				<div class="solidBorder">	
+				
+					<!-- Soups and Salads -->	
+					<h1>Soups and Salads</h1>
+					<div class="rowFlex">
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/cheese.png" alt="Soup">
+							<h2>Cheese Soup</h2>
+							<h3>$5.00</h3>
+							<p>Ingredients: Cheese</p>
+							<input type="number" min="1" id="soupAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="soupAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/salad1.png" alt="Chicken Salad">
+							<h2>Chicken Salad</h2>
+							<h3>$5.00</h3>
+							<p>It's a salad</p>
+							<input type="number" min="1" id="chickenSaladAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="chickenSaladAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/salad2.png" alt="Caesar Salad">
+							<h2>Caesar Salad</h2>
+							<h3>$5.00</h3>
+							<p>It has green</p>
+							<input type="number" min="1" id="caesarAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="caesarAdd">Add to Cart!</button>
+						</div>
+					</div>
+				</div>
+				<hr class="horizontalRule">
+				<div class="solidBorder">
+				
+					<!-- Sandwiches -->	
+					<h1>Sandwiches</h1>
+					<div class="rowFlex">
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/veggieburger.png" alt="Veggie Burger">
+							<h2>Veggie Burger</h2>
+							<h3>$8.00</h3>
+							<p>Grilled salad</p>
+							<input type="number" min="1" id="veggieBurgerAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="veggieBurgerAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/burger.png" alt="Jumbo Burger">
+							<h2>Jumbo Burger</h2>
+							<h3>$8.00</h3>
+							<p>More like yumbo</p>
+							<input type="number" min="1" id="burgerAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="burgerAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/blt.jpg" alt="Classic BLT">
+							<h2>Classic BLT</h2>
+							<h3>$8.00</h3>
+							<p>Much bacon</p>
+							<input type="number" min="1" id="bltAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="bltAdd">Add to Cart!</button>
+						</div>
+					</div>
+				</div>
+				<hr class="horizontalRule">
+				<div class="solidBorder">
+				
+					<!-- Entrees -->	
+					<h1>Entrees</h1>
+					<div class="rowFlex">
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/ribeye.png" alt="12oz Ribeye">
+							<h2>12oz Ribeye</h2>
+							<h3>$18.00</h3>
+							<p>Grade F meat</p>
+							<input type="number" min="1" id="ribeyeAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="ribeyeAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/lobster.png" alt="8oz Lobster Tail">
+							<h2>8oz Lobster Tail</h2>
+							<h3>$18.00</h3>
+							<p>"Fresh"</p>
+							<input type="number" min="1" id="lobsterAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="lobsterAdd">Add to Cart!</button>
+						</div>
+						
+						<div class="sectionFlex">
+							<img class="thumbnailSize" src="./images/pasta.png" alt="Shells and Cheese">
+							<h2>Shells and Cheese</h2>
+							<h3>$18.00</h3>
+							<p>Topped with cheese</p>
+							<input type="number" min="1" id="shellsAmount" placeholder="Enter Amount"></input>
+							<br>
+							<button type="button" id="shellsAdd">Add to Cart!</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<footer>
+				<h2>This is my footer</h2>
+				<p>Contact info:</p>
+			</footer>
+			
+			
+		</body>
+		
+	</html>

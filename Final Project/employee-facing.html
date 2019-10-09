@@ -1,0 +1,108 @@
+<!--
+  Title: WD 211 Project
+  Author: Bobby Xiong
+  -->
+
+<!DOCTYPE html>
+	<html lang = "en-us">
+	
+		<head>
+			<title>Chilibees</title> 
+			<link rel="icon" type="image/png" href="./images/weblogo.png">
+			<link href = "./css/main-style.css" rel = "stylesheet">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/additional-methods.js"></script>
+			<script src="./js/employee.js"></script>
+		</head>
+		
+		<body>
+		
+			<!-- Navbar -->
+			<div class="navbar">	
+				<a href="user-facing.html">Customers</a>
+				<a href="employee-facing.html">Employees</a>
+			</div>
+			
+			<!-- Logo -->
+			<header>
+				<img class="logo" src="./images/weblogo.png" alt="Chilibees">
+			</header>	
+			
+			<!-- Store Selector Button -->
+			<div class="storeDiv">
+				<p id="yourStore"></p>
+				<p id="changeStoreP">Select Store</p>
+			</div>
+			
+			<!-- Employee Login -->
+			<div id="employeeLogin">
+				<h2>Welcome to Chilibees!</h2>
+				<h3>Please enter your employee ID</h3>
+				<img class="profile" src="./images/profile.png" alt="Profile">
+				<h3 id="error"></h3>
+				
+				<form id="validateEmployee" action="submitForm()" name="validateEmp">
+					<div>
+						<label for="employeeID">Employee ID:</label>
+						<input type="text" maxlength="8" class="form-control" name="employeeID" id="employeeID">
+					</div>
+					<br>
+					<div>
+						<label for="password">Password:</label>
+						<input type="password" class="form-control"  name="password" id="password">
+					</div>
+					<br>
+					<button type="submit" id="submit">Submit Order</button><br>&nbsp;<br>
+				</form>
+			
+			</div>
+			
+			<!-- Store Selector Popup -->
+			<div id="storeSelector">
+				<h2>Welcome to Chilibees!</h2>
+				<h3>Please select the store you'd like to view</h3>
+				<div class="storeFlex">
+					<div class="store">
+						<div class="center">
+							<h2>Stevens Point</h2>
+							<p>123 Fake Street</p>
+						</div>
+						<div class="center">
+							<button type="button" id="stevensPoint">Make my store</button>
+						</div>
+					</div>
+					<div class="store">
+						<div class="center">
+							<h2>Wausau</h2>
+							<p>123 Fake Street</p>
+						</div>
+						<div class="center">
+							<button type="button" id="wausau">Make my store</button>
+						</div>
+					</div>
+					<div class="store">
+						<div class="center">
+							<h2>Green Bay</h2>
+							<p>123 Fake Street</p>
+						</div>
+						<div class="center">
+							<button type="button" id="greenBay">Make my store</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Orders and details -->
+			<h1>Orders</h1>
+			<div class="sectionFlex" id="orders">
+			</div>
+			
+			<footer>
+				<h2>This is my footer</h2>
+				<p>Contact info:</p>
+			</footer>
+	
+		</body>
+		
+	</html>
